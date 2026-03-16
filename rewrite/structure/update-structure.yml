@@ -1,6 +1,6 @@
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: com.belfius.RestructureProject
+name: com.yourorg.RestructureProject
 displayName: Restructure Project Files
 recipeList:
   # 1. Rename the page file
