@@ -1,0 +1,7 @@
+# Anything containing "node_modules" or "dist" in name should be ignored
+**/node_modules
+**/dist
+**/node_modules/**
+**/dist/**
+**/node_modules/**/**
+**/dist/**/**

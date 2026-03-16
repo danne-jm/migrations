@@ -1,0 +1,14 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.yourorg.RestructureProject
+displayName: Restructure Project
+recipeList:
+  # Example of renaming a file matching a specific pattern
+  - org.openrewrite.RenameFile:
+      fileMatcher: '**/application-*.yml'
+      fileName: application.yml
+      
+  # Example of moving a folder's contents to a new directory path
+  - org.openrewrite.MoveFile:
+      folder: '.jhipster'
+      moveTo: '../.seed4j'

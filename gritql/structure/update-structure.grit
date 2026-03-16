@@ -1,0 +1,10 @@
+language typescript
+
+// 4. Fix specific renamed userService import
+`"../services/user.service"` => `"../src/services/userService"`
+
+// 5. Fix remaining services imports (e.g., artPiece.service)
+`$str` where {
+    $str <: r"^\.\./services/(.+)$",
+    $str = `"../src/services/$1"`
+}

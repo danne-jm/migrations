@@ -1,0 +1,34 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.belfius.RestructureProject
+displayName: Restructure Project Files
+recipeList:
+  # 1. Rename the page file
+  - org.openrewrite.RenameFile:
+      fileMatcher: '**/pages/index-other.ts'
+      fileName: 'index-alternative.ts'
+      
+  # 2. Rename the service file
+  - org.openrewrite.RenameFile:
+      fileMatcher: '**/services/user.service.ts'
+      fileName: 'userService.ts'
+      
+  # 3. Move the services directory to the root src/ folder (Note the leading slash!)
+  - org.openrewrite.MoveFile:
+      folder: 'services'
+      moveTo: '/src/services'
+
+  # 4. Fix the specific renamed userService import
+  # Placed at the end to ensure the text-conversion doesn't break the file moves
+  - org.openrewrite.text.FindAndReplace:
+      find: '../services/user.service'
+      replace: '../src/services/userService'
+      filePattern: '**/pages/*.ts'
+
+  # 5. Fix any other remaining services imports (e.g., artPiece.service.ts)
+  - org.openrewrite.text.FindAndReplace:
+      find: '../services/'
+      replace: '../src/services/'
+      filePattern: '**/pages/*.ts'
+
+#This script will rename one page file, rename one service file, and then move the entire services folder to a new location.

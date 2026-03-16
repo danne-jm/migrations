@@ -1,0 +1,24 @@
+type: specs.openrewrite.org/v1beta/recipe
+name: com.yourorg.UpdateEnvFiles
+displayName: Update environment variables
+recipeList:
+  - org.openrewrite.properties.ChangePropertyKey:
+      oldPropertyKey: OLD_API_PORT
+      newPropertyKey: API_PORT
+      relaxedBinding: false # When True, it will also match OLD_API_PORT_OTHER instead of OLD_API_PORT
+      # Explicitly target .env files
+      fileMatcher: "**/.env"
+      
+  - org.openrewrite.properties.ChangePropertyValue:
+      propertyKey: NODE_ENV
+      newValue: 'production'
+      oldValue: 'development'
+      relaxedBinding: false
+      # Explicitly target .env files
+      fileMatcher: "**/.env"
+
+
+#Because .env files follow standard properties formats, OpenRewrite uses its core properties recipes to safely rename keys and change specific values.
+
+#mod config build parsers add properties "**/.env"
+#mod config recipes yaml install /home/daniel/Desktop/Programming/belfius/migrations/rewrite/.env/update-env.yml

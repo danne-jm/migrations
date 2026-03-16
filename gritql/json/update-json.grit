@@ -1,0 +1,4 @@
+language json
+
+// Update scripts.test
+`"test": $_` => `"test": "jest --passWithNoTests"` within `"scripts": $_`

@@ -1,0 +1,3 @@
+[update_test_script]
+match = '"scripts": { :[before], "test": :[_], :[after] }'
+rewrite = '"scripts": { :[before], "test": "jest --passWithNoTests", :[after] }'

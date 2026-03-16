@@ -1,0 +1,7 @@
+id: update-test-script
+language: Json
+rule:
+  pattern: '"test": $TEST'
+  inside:
+    pattern: '"scripts": { $$$ }'
+fix: '"test": "jest --passWithNoTests"'

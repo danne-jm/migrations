@@ -1,0 +1,12 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.yourorg.UpdatePackageJson
+displayName: Update package.json scripts
+recipeList:
+  - org.openrewrite.json.ChangeValue:
+      oldKeyPath: $.scripts.test
+      value: 'jest --passWithNoTests'
+
+#This recipe targets the JSON file and uses a JsonPath expression to modify a specific value while leaving the key intact.
+
+#mod config recipes yaml install /home/daniel/Desktop/Programming/belfius/migrations/rewrite/json/update-json.yml

@@ -1,0 +1,19 @@
+id: fix-user-service-import
+language: TypeScript
+rule:
+  pattern: '"../services/user.service"'
+fix: '"../src/services/userService"'
+
+---
+id: fix-remaining-services-imports
+language: TypeScript
+rule:
+  pattern: $STR
+  regex: '^"\.\./services/(.+)"$'
+transform:
+  NEW_STR:
+    replace:
+      replace: '^"\.\./services/(.+)"$'
+      by: '"../src/services/$1"'
+      source: $STR
+fix: $NEW_STR

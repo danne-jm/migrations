@@ -1,0 +1,16 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.yourorg.UpdateEnvVariables
+displayName: Update environment variables
+recipeList:
+  # Renames the key from OLD_DATABASE_URL to NEW_DATABASE_URL
+  - org.openrewrite.properties.ChangePropertyKey:
+      oldPropertyKey: OLD_DATABASE_URL
+      newPropertyKey: NEW_DATABASE_URL
+      relaxedBinding: false # 
+      
+  # Changes the value of an existing variable
+  - org.openrewrite.properties.ChangePropertyValue:
+      propertyKey: API_ENV
+      newValue: 'production'
+      oldValue: 'staging'

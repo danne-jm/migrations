@@ -1,0 +1,7 @@
+[fix_user_service_import]
+match = '"../services/user.service"'
+rewrite = '"../src/services/userService"'
+
+[fix_remaining_services_imports]
+match = '"../services/:[rest]"'
+rewrite = '"../src/services/:[rest]"'

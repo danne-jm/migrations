@@ -1,0 +1,7 @@
+[change_api_port_key]
+match = 'OLD_API_PORT=:[val]'
+rewrite = 'API_PORT=:[val]'
+
+[change_node_env_value]
+match = 'NODE_ENV=development'
+rewrite = 'NODE_ENV=production'

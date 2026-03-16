@@ -1,0 +1,18 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.yourorg.ChangeJsonExample
+displayName: Change JSON value example
+recipeList:
+  - org.openrewrite.json.ChangeValue:
+      oldKeyPath: $.subjects.kind
+      value: 'Deployment'
+
+#This declarative recipe targets JSON files and replaces the value of a specific mapping while leaving the key itself perfectly intact.
+
+#Here is exactly how it works under the hood:
+
+#JsonPath Expression: The oldKeyPath property uses a query language called JsonPath to pinpoint the exact location of the data you want to change.
+
+#Traversal: In JsonPath, the $ symbol represents the root element of the JSON document. The engine starts at the root ($), looks for an object named subjects, and then drops down to find the kind key inside of it.
+
+#Execution: Once it locates $.subjects.kind, it safely replaces whatever the current value is with the new string 'Deployment'.
